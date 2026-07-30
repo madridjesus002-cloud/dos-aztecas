@@ -20,7 +20,6 @@
 .product-card:hover .product-image-photo img{transform:scale(1.06)}
 @media(max-width:650px){.product-image-photo img{object-position:center 50%}}
 /* Match the signature Dos Aztecas wordmark detail in the front header. */
-.brand-name{display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:.88;letter-spacing:.06em}
-.brand-line{display:block;white-space:nowrap}
+.brand-name{display:inline-block;line-height:1;letter-spacing:.06em;white-space:nowrap}
 .brand-o{position:relative;display:inline-block;margin:0 .02em}
 .brand-o::after{content:"";position:absolute;left:10%;width:80%;bottom:-.12em;height:.13em;border-radius:999px;background:currentColor}
