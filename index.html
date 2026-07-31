@@ -25,7 +25,7 @@
       <a href="#recipes">Recipes</a>
       <a href="#wholesale">Wholesale</a>
     </nav>
-    <a class="pill pill-small header-cta" href="#products">Shop the flavor</a>
+    <button class="pill pill-small header-cta cart-toggle" type="button">Cart <span class="cart-count">0</span></button>
   </header>
 
   <main id="top">
@@ -92,7 +92,7 @@
           <div class="product-meta"><span>Mild · Fresh</span><span>01</span></div>
           <h3>Green Salsa</h3>
           <p>Tomatillo, poblano, serrano, and garlic create a bright, balanced salsa for tacos and more.</p>
-          <a href="#recipes" class="card-link">See it in a recipe <span>↗</span></a>
+          <button class="card-link add-to-cart" type="button" data-product="green-salsa">Add to cart · $8.99 <span>+</span></button>
         </article>
 
         <article class="product-card cream reveal">
@@ -100,7 +100,7 @@
           <div class="product-meta"><span>Smoky · Citrus</span><span>02</span></div>
           <h3>Carne Asada Marinade</h3>
           <p>A savory blend of guajillo, puya, garlic, onion, and orange made for the grill.</p>
-          <a href="#wholesale" class="card-link">Wholesale inquiry <span>↗</span></a>
+          <button class="card-link add-to-cart" type="button" data-product="carne-asada">Add to cart · $8.99 <span>+</span></button>
         </article>
 
         <article class="product-card red reveal">
@@ -108,7 +108,7 @@
           <div class="product-meta"><span>Bold · Traditional</span><span>03</span></div>
           <h3>Adobada al Pastor</h3>
           <p>Deep chile flavor, warm spices, and achiote inspired by the unforgettable taste of al pastor.</p>
-          <a href="#recipe-pastor" class="card-link">View recipe <span>↗</span></a>
+          <button class="card-link add-to-cart" type="button" data-product="adobada-pastor">Add to cart · $8.99 <span>+</span></button>
         </article>
       </div>
     </section>
@@ -213,6 +213,28 @@
       <div><h3>How to make it</h3><ol id="modal-steps"></ol></div>
     </div>
   </dialog>
+
+  <div class="cart-backdrop" hidden></div>
+  <aside class="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
+    <div class="cart-head">
+      <div><p class="eyebrow">Your order</p><h2 id="cart-title">Shopping cart</h2></div>
+      <button class="cart-close" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items"></div>
+    <p class="cart-empty">Your cart is ready for some flavor.</p>
+    <div class="cart-checkout" hidden>
+      <div class="cart-total"><span>Product total</span><strong>$0.00</strong></div>
+      <fieldset class="fulfillment-options">
+        <legend>How should we get it to you?</legend>
+        <label><input type="radio" name="fulfillment" value="shipping" checked> <span><strong>U.S. shipping</strong><small>$7.99 · 3–5 business days</small></span></label>
+        <label><input type="radio" name="fulfillment" value="local"> <span><strong>Local drop-off</strong><small>$3.99 · Hartford area</small></span></label>
+      </fieldset>
+      <label class="local-zip" hidden>Delivery ZIP code<input type="text" inputmode="numeric" maxlength="5" placeholder="06106"></label>
+      <p class="cart-note">Secure checkout is provided by Stripe. Shipping address and tax are confirmed at checkout.</p>
+      <button class="pill checkout-button" type="button">Continue to secure checkout</button>
+      <p class="checkout-error" role="alert"></p>
+    </div>
+  </aside>
 
   <script src="script.js"></script>
 </body>

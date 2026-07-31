@@ -22,3 +22,121 @@ if (founderVideo && videoControl) {
     }
   });
 }
+
+// Lightweight storefront cart. Stripe receives only validated product IDs and quantities.
+const STORE_PRODUCTS = {
+  'green-salsa': { name: 'Green Salsa', price: 899 },
+  'carne-asada': { name: 'Carne Asada Marinade', price: 899 },
+  'adobada-pastor': { name: 'Adobada al Pastor', price: 899 }
+};
+const cart = JSON.parse(localStorage.getItem('dos-aztecas-cart') || '{}');
+const cartDrawer = document.querySelector('.cart-drawer');
+const cartBackdrop = document.querySelector('.cart-backdrop');
+const cartItems = document.querySelector('.cart-items');
+const cartEmpty = document.querySelector('.cart-empty');
+const cartCheckout = document.querySelector('.cart-checkout');
+const cartCount = document.querySelector('.cart-count');
+const cartTotal = document.querySelector('.cart-total strong');
+const localZip = document.querySelector('.local-zip');
+const checkoutButton = document.querySelector('.checkout-button');
+const checkoutError = document.querySelector('.checkout-error');
+
+const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
+const saveCart = () => localStorage.setItem('dos-aztecas-cart', JSON.stringify(cart));
+
+function openCart() {
+  cartDrawer?.classList.add('open');
+  cartDrawer?.setAttribute('aria-hidden', 'false');
+  if (cartBackdrop) cartBackdrop.hidden = false;
+}
+
+function closeCart() {
+  cartDrawer?.classList.remove('open');
+  cartDrawer?.setAttribute('aria-hidden', 'true');
+  if (cartBackdrop) cartBackdrop.hidden = true;
+}
+
+function updateCart() {
+  if (!cartItems) return;
+  const entries = Object.entries(cart).filter(([id, quantity]) => STORE_PRODUCTS[id] && quantity > 0);
+  const itemCount = entries.reduce((sum, [, quantity]) => sum + quantity, 0);
+  const total = entries.reduce((sum, [id, quantity]) => sum + STORE_PRODUCTS[id].price * quantity, 0);
+  cartCount.textContent = itemCount;
+  cartTotal.textContent = money(total);
+  cartEmpty.hidden = entries.length > 0;
+  cartCheckout.hidden = entries.length === 0;
+  cartItems.innerHTML = entries.map(([id, quantity]) => {
+    const product = STORE_PRODUCTS[id];
+    return `<div class="cart-item" data-cart-id="${id}">
+      <strong>${product.name}</strong><span class="cart-item-price">${money(product.price * quantity)}</span>
+      <div class="quantity-controls"><button type="button" data-action="decrease" aria-label="Decrease ${product.name}">−</button><span>${quantity}</span><button type="button" data-action="increase" aria-label="Increase ${product.name}">+</button></div>
+      <button class="remove-item" type="button" data-action="remove">Remove</button>
+    </div>`;
+  }).join('');
+  saveCart();
+}
+
+document.querySelectorAll('.cart-toggle').forEach(button => button.addEventListener('click', openCart));
+document.querySelector('.cart-close')?.addEventListener('click', closeCart);
+cartBackdrop?.addEventListener('click', closeCart);
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeCart(); });
+
+document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
+  const id = button.dataset.product;
+  cart[id] = Math.min(10, (cart[id] || 0) + 1);
+  updateCart();
+  openCart();
+  button.classList.add('added');
+  button.firstChild.textContent = 'Added · $8.99 ';
+  setTimeout(() => { button.classList.remove('added'); button.firstChild.textContent = 'Add to cart · $8.99 '; }, 1200);
+}));
+
+cartItems?.addEventListener('click', event => {
+  const button = event.target.closest('button[data-action]');
+  const row = event.target.closest('[data-cart-id]');
+  if (!button || !row) return;
+  const id = row.dataset.cartId;
+  if (button.dataset.action === 'increase') cart[id] = Math.min(10, (cart[id] || 0) + 1);
+  if (button.dataset.action === 'decrease') cart[id] = Math.max(0, (cart[id] || 0) - 1);
+  if (button.dataset.action === 'remove') cart[id] = 0;
+  updateCart();
+});
+
+document.querySelectorAll('input[name="fulfillment"]').forEach(input => input.addEventListener('change', () => {
+  if (localZip) localZip.hidden = input.value !== 'local' || !input.checked;
+  checkoutError.textContent = '';
+}));
+
+checkoutButton?.addEventListener('click', async () => {
+  const fulfillment = document.querySelector('input[name="fulfillment"]:checked')?.value || 'shipping';
+  const postalCode = document.querySelector('.local-zip input')?.value.trim() || '';
+  checkoutError.textContent = '';
+  checkoutButton.disabled = true;
+  checkoutButton.textContent = 'Opening secure checkout…';
+  try {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fulfillment,
+        postalCode,
+        items: Object.entries(cart).map(([id, quantity]) => ({ id, quantity }))
+      })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Unable to start checkout.');
+    window.location.assign(data.url);
+  } catch (error) {
+    checkoutError.textContent = error.message;
+    checkoutButton.disabled = false;
+    checkoutButton.textContent = 'Continue to secure checkout';
+  }
+});
+
+const orderState = new URLSearchParams(window.location.search).get('order');
+if (orderState === 'success') {
+  Object.keys(cart).forEach(id => delete cart[id]);
+  saveCart();
+  document.querySelector('main')?.insertAdjacentHTML('afterbegin', '<div class="order-status"><p class="eyebrow">Order received</p><h2>Thank you for supporting Dos Aztecas.</h2><p>A Stripe receipt has been sent to your email. We’ll follow up with fulfillment details.</p></div>');
+}
+updateCart();
