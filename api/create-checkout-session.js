@@ -44,8 +44,12 @@ export default async function handler(request, response) {
     add(params, `line_items[${index}][quantity]`, quantity);
   });
 
-  const shippingName = fulfillment === "local" ? "Local drop-off (Hartford area)" : "Standard U.S. shipping";
-  const shippingAmount = fulfillment === "local" ? 399 : 799;
+  const productSubtotal = cleanItems.reduce((total, { product, quantity }) => total + product.unitAmount * quantity, 0);
+  const qualifiesForFreeShipping = fulfillment === "shipping" && productSubtotal >= 3500;
+  const shippingName = fulfillment === "local"
+    ? "Local drop-off (Hartford area)"
+    : qualifiesForFreeShipping ? "Free standard U.S. shipping" : "Standard U.S. shipping";
+  const shippingAmount = fulfillment === "local" ? 399 : qualifiesForFreeShipping ? 0 : 499;
   add(params, "shipping_options[0][shipping_rate_data][type]", "fixed_amount");
   add(params, "shipping_options[0][shipping_rate_data][fixed_amount][amount]", shippingAmount);
   add(params, "shipping_options[0][shipping_rate_data][fixed_amount][currency]", "usd");
