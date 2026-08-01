@@ -16,8 +16,9 @@ export default async function handler(request, response) {
 
   const { items = [], fulfillment = "shipping", postalCode = "" } = request.body || {};
   const cleanItems = items
-    .map(({ id, quantity }) => ({ product: PRODUCTS[id], quantity: Math.max(1, Math.min(10, Number(quantity) || 0)) }))
-    .filter(({ product, quantity }) => product && quantity);
+    .map(({ id, quantity }) => ({ product: PRODUCTS[id], quantity: Number(quantity) || 0 }))
+    .filter(({ product, quantity }) => product && quantity > 0)
+    .map(({ product, quantity }) => ({ product, quantity: Math.min(10, Math.floor(quantity)) }));
 
   if (!cleanItems.length) return response.status(400).json({ error: "Your cart is empty." });
   if (fulfillment === "local" && !LOCAL_ZIPS.has(String(postalCode).trim())) {
