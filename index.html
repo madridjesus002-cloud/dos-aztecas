@@ -96,6 +96,264 @@
         </article>
 
         <article class="product-card cream reveal">
+          <div class="product-image product-image-photo"><img src="carne-asada-product.png" alt="Dos Aztecas Carne Asada marinade with grilled carne asada tacos" /></div>
+          <div class="product-meta"><span>Smoky · Citrus</span><span>02</span></div>
+          <h3>Carne Asada Marinade</h3>
+          <p>A savory blend of guajillo, puya, garlic, onion, and orange made for the grill.</p>
+          <button class="card-link add-to-cart" type="button" data-product="carne-asada">Add to cart · $8.99 <span>+</span></button>
+        </article>
+
+        <article class="product-card red reveal">
+          <div class="product-image product-image-photo"><img src="adobada-product.png" alt="Dos Aztecas Adobada al Pastor marinade with tacos al pastor" /></div>
+          <div class="product-meta"><span>Bold · Traditional</span><span>03</span></div>
+          <h3>Adobada al Pastor</h3>
+          <p>Deep chile flavor, warm spices, and achiote inspired by the unforgettable taste of al pastor.</p>
+          <button class="card-link add-to-cart" type="button" data-product="adobada-pastor">Add to cart · $8.99 <span>+</span></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="recipes" id="recipes">
+      <div class="section-heading recipe-heading reveal">
+        <div>
+          <p class="eyebrow">From our kitchen</p>
+          <h2>Three ways to gather.</h2>
+        </div>
+        <p>Signature recipes built around bold flavor, family-style cooking, and the products at the heart of Dos Aztecas.</p>
+      </div>
+
+      <div class="recipe-grid">
+        <article class="recipe-card pastor reveal" id="recipe-pastor">
+          <div class="recipe-art">
+            <div class="recipe-number">01</div>
+            <div class="taco-illustration tacos-three" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="recipe-product">Uses Adobada al Pastor</div>
+          </div>
+          <div class="recipe-copy">
+            <p class="eyebrow">A street-food classic</p>
+            <h3>Tacos al Pastor</h3>
+            <p>Marinated pork, warm tortillas, pineapple, onion, and cilantro brought together with bold adobada flavor.</p>
+            <button class="recipe-button" data-recipe="pastor">View recipe <span>↗</span></button>
+          </div>
+        </article>
+
+        <article class="recipe-card flautas reveal">
+          <div class="recipe-art">
+            <div class="recipe-number">02</div>
+            <div class="flauta-illustration" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="recipe-product">Serve with Green Salsa</div>
+          </div>
+          <div class="recipe-copy">
+            <p class="eyebrow">Golden and crisp</p>
+            <h3>Tacos Dorados <small>(Flautas)</small></h3>
+            <p>Crispy rolled tacos finished with lettuce, crema, queso fresco, and a generous spoonful of green salsa.</p>
+            <button class="recipe-button" data-recipe="flautas">View recipe <span>↗</span></button>
+          </div>
+        </article>
+
+        <article class="recipe-card chilaquiles reveal">
+          <div class="recipe-art">
+            <div class="recipe-number">03</div>
+            <div class="chilaquiles-illustration" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div>
+            <div class="recipe-product">Made with Red Salsa</div>
+          </div>
+          <div class="recipe-copy">
+            <p class="eyebrow">A comforting favorite</p>
+            <h3>Chilaquiles</h3>
+            <p>Crisp tortilla chips coated in salsa and layered with crema, queso fresco, onion, cilantro, and egg.</p>
+            <button class="recipe-button" data-recipe="chilaquiles">View recipe <span>↗</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="origin" id="origin">
+      <div class="origin-map reveal">
+        <div class="map-line"></div>
+        <div class="city puebla"><span></span><strong>Puebla, México</strong><small>Where the story began</small></div>
+        <div class="city hartford"><span></span><strong>Hartford, Connecticut</strong><small>Where the dream is growing</small></div>
+      </div>
+      <div class="origin-copy reveal">
+        <p class="eyebrow">From Puebla to your table</p>
+        <h2>A journey carried through flavor.</h2>
+        <p>Our story crosses borders, but its heart remains the same: family, perseverance, and food made with meaning.</p>
+      </div>
+    </section>
+
+    <section class="wholesale" id="wholesale">
+      <div class="wholesale-pattern"></div>
+      <div class="wholesale-copy reveal">
+        <p class="eyebrow">For retailers and partners</p>
+        <h2>Bring Dos Aztecas<br>to your shelves.</h2>
+        <p>We are growing with select grocers, specialty markets, restaurants, and community partners.</p>
+        <a class="pill" href="mailto:dosazetcas01@gmail.com?subject=Dos%20Aztecas%20Wholesale%20Inquiry">Start a wholesale conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="footer-logo"><img src="logo-icon.png" alt="" /><span>DOS AZTECAS</span></div>
+      <p>Taste the history. Taste the spirit. Taste Dos Aztecas.</p>
+    </div>
+    <div class="footer-links">
+      <div><strong>Explore</strong><a href="#products">Products</a><a href="#story">Our Story</a><a href="#recipes">Recipes</a></div>
+      <div><strong>Connect</strong><a href="mailto:dosazetcas01@gmail.com">Email</a><a href="https://instagram.com/dosaztecas" target="_blank" rel="noreferrer">Instagram</a><a href="#wholesale">Wholesale</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Abuela’s Mexican Cuisine LLC</span><span>Hartford, Connecticut</span></div>
+  </footer>
+
+  <dialog class="recipe-modal" id="recipe-modal">
+    <button class="modal-close" aria-label="Close recipe">×</button>
+    <p class="eyebrow" id="modal-kicker"></p>
+    <h2 id="modal-title"></h2>
+    <p id="modal-description"></p>
+    <div class="modal-columns">
+      <div><h3>What you’ll need</h3><ul id="modal-ingredients"></ul></div>
+      <div><h3>How to make it</h3><ol id="modal-steps"></ol></div>
+    </div>
+  </dialog>
+
+  <div class="cart-backdrop" hidden></div>
+  <aside class="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
+    <div class="cart-head">
+      <div><p class="eyebrow">Your order</p><h2 id="cart-title">Shopping cart</h2></div>
+      <button class="cart-close" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items"></div>
+    <p class="cart-empty">Your cart is ready for some flavor.</p>
+    <div class="cart-checkout" hidden>
+      <div class="cart-total"><span>Product total</span><strong>$0.00</strong></div>
+      <fieldset class="fulfillment-options">
+        <legend>How should we get it to you?</legend>
+        <label><input type="radio" name="fulfillment" value="shipping" checked> <span><strong>U.S. shipping</strong><small>$4.99 · Free on orders $35+ · 3–5 business days</small></span></label>
+        <label><input type="radio" name="fulfillment" value="local"> <span><strong>Local drop-off</strong><small>$3.99 · Hartford area</small></span></label>
+      </fieldset>
+      <label class="local-zip" hidden>Delivery ZIP code<input type="text" inputmode="numeric" maxlength="5" placeholder="06106"></label>
+      <p class="cart-note">Secure checkout is provided by Stripe. Shipping address and tax are confirmed at checkout.</p>
+      <button class="pill checkout-button" type="button">Continue to secure checkout</button>
+      <p class="checkout-error" role="alert"></p>
+    </div>
+  </aside>
+
+  <section class="checkout-overlay" aria-hidden="true" aria-labelledby="checkout-title">
+    <div class="checkout-shell">
+      <div class="checkout-head">
+        <div><p class="eyebrow">Secure payment</p><h2 id="checkout-title">Complete your order</h2></div>
+        <button class="checkout-close" type="button" aria-label="Close checkout">×</button>
+      </div>
+      <div id="embedded-checkout"></div>
+      <div class="checkout-success" hidden>
+        <p class="eyebrow">Order received</p>
+        <h2>Thank you for supporting Dos Aztecas.</h2>
+        <p>Stripe has sent your receipt. We’ll follow up with fulfillment details.</p>
+        <button class="pill checkout-done" type="button">Continue shopping</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Dos Aztecas — authentic Mexican sauces and marinades rooted in Puebla and crafted in Connecticut." />
+  <title>Dos Aztecas | Taste the Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement">ROOTED IN PUEBLA · CRAFTED IN CONNECTICUT · HECHO CON PASIÓN</div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Dos Aztecas home">
+      <img class="brand-icon" src="logo-icon.png" alt="" />
+      <span class="brand-name">D<span class="brand-o">O</span>S AZTECAS</span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav class="nav-links" id="main-nav" aria-label="Main navigation">
+      <a href="#products">Products</a>
+      <a href="#story">Our Heritage</a>
+      <a href="#recipes">Recipes</a>
+      <a href="#wholesale">Wholesale</a>
+    </nav>
+    <button class="pill pill-small header-cta cart-toggle" type="button">Cart <span class="cart-count">0</span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Mexican food products</p>
+        <h1>Taste the<br><em>heritage.</em></h1>
+        <p class="hero-text">Bold sauces and marinades inspired by family tradition, created to bring the fire, color, and soul of México to every table.</p>
+        <div class="hero-actions">
+          <a class="pill" href="#products">Explore our products</a>
+          <a class="text-link" href="#story">Discover our story <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal">
+        <div class="sun-disc"></div>
+        <div class="hero-label-wrap">
+          <img src="adobada-label.jpg" alt="Dos Aztecas Adobada al Pastor label" />
+        </div>
+        <span class="spark spark-one">✦</span>
+        <span class="spark spark-two">✦</span>
+        <p class="vertical-note">AUTHENTIC FLAVOR · FAMILY TRADITION</p>
+      </div>
+      <div class="scroll-cue">Scroll to discover <span>↓</span></div>
+    </section>
+
+    <section class="marquee" aria-label="Brand values">
+      <div class="marquee-track">
+        <span>SMALL-BATCH FLAVOR</span><b>✦</b><span>FAMILY INSPIRED</span><b>✦</b><span>ROOTED IN MÉXICO</span><b>✦</b><span>MADE WITH PURPOSE</span><b>✦</b>
+        <span>SMALL-BATCH FLAVOR</span><b>✦</b><span>FAMILY INSPIRED</span><b>✦</b><span>ROOTED IN MÉXICO</span><b>✦</b><span>MADE WITH PURPOSE</span><b>✦</b>
+      </div>
+    </section>
+
+    <section class="intro" id="story">
+      <div class="founder-video-wrap reveal">
+        <video class="founder-video" autoplay muted loop playsinline preload="metadata" poster="brand-system.png" aria-label="Dos Aztecas founder sharing complimentary product samples with the community">
+          <source src="founder-sampling.mp4" type="video/mp4" />
+        </video>
+        <div class="video-shade" aria-hidden="true"></div>
+        <div class="video-badge"><span>Founder in the community</span><strong>Hartford, CT</strong></div>
+        <button class="video-control" type="button" aria-label="Pause founder video" aria-pressed="false">Pause</button>
+      </div>
+      <div class="intro-copy reveal">
+        <p class="eyebrow">Meet the founder</p>
+        <h2>Built from heritage.<br>Shared with our community.</h2>
+        <p>Born in Puebla and growing in Connecticut, Dos Aztecas is more than a food brand. It is a commitment to preserve the flavors we grew up with and share them personally—one sample, one family, and one table at a time.</p>
+        <blockquote>“I want every person who tastes Dos Aztecas to feel the care, history, and pride behind the recipe.”</blockquote>
+        <a class="text-link light" href="#origin">Follow our journey <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Meet the family</p>
+          <h2>Flavor with a story.</h2>
+        </div>
+        <p>From bright tomatillo salsa to smoky marinades, each product is designed to turn everyday meals into something worth gathering around.</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card green reveal">
+          <div class="product-image"><img src="green-label.png" alt="Green Salsa label" /></div>
+          <div class="product-meta"><span>Mild · Fresh</span><span>01</span></div>
+          <h3>Green Salsa</h3>
+          <p>Tomatillo, poblano, serrano, and garlic create a bright, balanced salsa for tacos and more.</p>
+          <button class="card-link add-to-cart" type="button" data-product="green-salsa">Add to cart · $8.99 <span>+</span></button>
+        </article>
+
+        <article class="product-card cream reveal">
           <div class="product-image"><img src="carne-label.png" alt="Carne Asada marinade label" /></div>
           <div class="product-meta"><span>Smoky · Citrus</span><span>02</span></div>
           <h3>Carne Asada Marinade</h3>
