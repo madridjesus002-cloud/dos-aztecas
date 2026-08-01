@@ -28,7 +28,7 @@ export default async function handler(request, response) {
   const origin = request.headers.origin || "https://dos-aztecas.vercel.app";
   const params = new URLSearchParams();
   add(params, "mode", "payment");
-  add(params, "ui_mode", "embedded");
+  add(params, "ui_mode", "embedded_page");
   add(params, "redirect_on_completion", "never");
   add(params, "billing_address_collection", "auto");
   add(params, "shipping_address_collection[allowed_countries][0]", "US");
