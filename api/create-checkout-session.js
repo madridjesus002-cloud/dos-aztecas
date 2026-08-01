@@ -28,8 +28,8 @@ export default async function handler(request, response) {
   const origin = request.headers.origin || "https://dos-aztecas.vercel.app";
   const params = new URLSearchParams();
   add(params, "mode", "payment");
-  add(params, "success_url", `${origin}/?order=success`);
-  add(params, "cancel_url", `${origin}/?order=cancelled#products`);
+  add(params, "ui_mode", "embedded");
+  add(params, "redirect_on_completion", "never");
   add(params, "billing_address_collection", "auto");
   add(params, "shipping_address_collection[allowed_countries][0]", "US");
   add(params, "phone_number_collection[enabled]", "true");
@@ -69,5 +69,5 @@ export default async function handler(request, response) {
   });
   const session = await stripeResponse.json();
   if (!stripeResponse.ok) return response.status(400).json({ error: session.error?.message || "Unable to start checkout." });
-  return response.status(200).json({ url: session.url });
+  return response.status(200).json({ clientSecret: session.client_secret });
 }
