@@ -236,6 +236,23 @@
     </div>
   </aside>
 
+  <section class="checkout-overlay" aria-hidden="true" aria-labelledby="checkout-title">
+    <div class="checkout-shell">
+      <div class="checkout-head">
+        <div><p class="eyebrow">Secure payment</p><h2 id="checkout-title">Complete your order</h2></div>
+        <button class="checkout-close" type="button" aria-label="Close checkout">×</button>
+      </div>
+      <div id="embedded-checkout"></div>
+      <div class="checkout-success" hidden>
+        <p class="eyebrow">Order received</p>
+        <h2>Thank you for supporting Dos Aztecas.</h2>
+        <p>Stripe has sent your receipt. We’ll follow up with fulfillment details.</p>
+        <button class="pill checkout-done" type="button">Continue shopping</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://js.stripe.com/v3/"></script>
   <script src="script.js"></script>
 </body>
 </html>
