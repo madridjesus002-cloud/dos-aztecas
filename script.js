@@ -171,3 +171,43 @@ checkoutClose?.addEventListener('click', closeEmbeddedCheckout);
 checkoutDone?.addEventListener('click', closeEmbeddedCheckout);
 
 updateCart();
+
+// Play the two hero clips as one lightweight, accessible cooking reel.
+const heroReelVideos = [...document.querySelectorAll('.hero-reel-video')];
+const heroReelControl = document.querySelector('.hero-reel-control');
+let heroReelIndex = 0;
+let heroReelPaused = false;
+
+function showHeroReelClip(index) {
+  heroReelVideos.forEach((video, videoIndex) => {
+    const active = videoIndex === index;
+    video.classList.toggle('is-active', active);
+    if (!active) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+  const activeVideo = heroReelVideos[index];
+  if (activeVideo && !heroReelPaused) activeVideo.play().catch(() => {});
+}
+
+heroReelVideos.forEach((video, index) => {
+  video.addEventListener('ended', () => {
+    if (heroReelPaused || index !== heroReelIndex) return;
+    heroReelIndex = (heroReelIndex + 1) % heroReelVideos.length;
+    showHeroReelClip(heroReelIndex);
+  });
+});
+
+if (heroReelVideos.length && heroReelControl) {
+  showHeroReelClip(heroReelIndex);
+  heroReelControl.addEventListener('click', () => {
+    heroReelPaused = !heroReelPaused;
+    const activeVideo = heroReelVideos[heroReelIndex];
+    if (heroReelPaused) activeVideo.pause();
+    else activeVideo.play().catch(() => {});
+    heroReelControl.textContent = heroReelPaused ? 'Play' : 'Pause';
+    heroReelControl.setAttribute('aria-label', `${heroReelPaused ? 'Play' : 'Pause'} cooking reel`);
+    heroReelControl.setAttribute('aria-pressed', String(heroReelPaused));
+  });
+}
