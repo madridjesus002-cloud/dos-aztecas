@@ -40,6 +40,12 @@ const cartTotal = document.querySelector('.cart-total strong');
 const localZip = document.querySelector('.local-zip');
 const checkoutButton = document.querySelector('.checkout-button');
 const checkoutError = document.querySelector('.checkout-error');
+const checkoutOverlay = document.querySelector('.checkout-overlay');
+const checkoutClose = document.querySelector('.checkout-close');
+const checkoutSuccess = document.querySelector('.checkout-success');
+const checkoutDone = document.querySelector('.checkout-done');
+const stripe = window.Stripe?.('pk_live_51TzNhbLRmKQ3PcsTJ3CeZSQ3Pvj1ZNB9aCol6UmMmKqd3TeYhtKav0RwybMYsmQ1k515Oc0AMVxWJmkWSrFBbE5H00aNQEWxUW');
+let embeddedCheckout;
 
 const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 const saveCart = () => localStorage.setItem('dos-aztecas-cart', JSON.stringify(cart));
@@ -125,7 +131,25 @@ checkoutButton?.addEventListener('click', async () => {
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'Unable to start checkout.');
-    window.location.assign(data.url);
+    if (!stripe || !data.clientSecret) throw new Error('Secure checkout could not be loaded.');
+    closeCart();
+    checkoutOverlay?.classList.add('open');
+    checkoutOverlay?.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('checkout-open');
+    embeddedCheckout = await stripe.initEmbeddedCheckout({
+      fetchClientSecret: async () => data.clientSecret,
+      onComplete: () => {
+        embeddedCheckout?.destroy();
+        embeddedCheckout = undefined;
+        document.querySelector('#embedded-checkout').replaceChildren();
+        Object.keys(cart).forEach(id => delete cart[id]);
+        updateCart();
+        checkoutSuccess.hidden = false;
+      }
+    });
+    embeddedCheckout.mount('#embedded-checkout');
+    checkoutButton.disabled = false;
+    checkoutButton.textContent = 'Continue to secure checkout';
   } catch (error) {
     checkoutError.textContent = error.message;
     checkoutButton.disabled = false;
@@ -133,10 +157,17 @@ checkoutButton?.addEventListener('click', async () => {
   }
 });
 
-const orderState = new URLSearchParams(window.location.search).get('order');
-if (orderState === 'success') {
-  Object.keys(cart).forEach(id => delete cart[id]);
-  saveCart();
-  document.querySelector('main')?.insertAdjacentHTML('afterbegin', '<div class="order-status"><p class="eyebrow">Order received</p><h2>Thank you for supporting Dos Aztecas.</h2><p>A Stripe receipt has been sent to your email. We’ll follow up with fulfillment details.</p></div>');
+function closeEmbeddedCheckout() {
+  embeddedCheckout?.destroy();
+  embeddedCheckout = undefined;
+  document.querySelector('#embedded-checkout')?.replaceChildren();
+  checkoutSuccess.hidden = true;
+  checkoutOverlay?.classList.remove('open');
+  checkoutOverlay?.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('checkout-open');
 }
+
+checkoutClose?.addEventListener('click', closeEmbeddedCheckout);
+checkoutDone?.addEventListener('click', closeEmbeddedCheckout);
+
 updateCart();
