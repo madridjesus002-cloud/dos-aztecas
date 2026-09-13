@@ -2,7 +2,7 @@ const PRODUCTS = {
   "green-salsa": { name: "Dos Aztecas Green Salsa", unitAmount: 899 },
   "carne-asada": { name: "Dos Aztecas Carne Asada Marinade", unitAmount: 899 },
   "adobada-pastor": { name: "Dos Aztecas Adobada al Pastor", unitAmount: 899 },
-  "corn-tortillas": { name: "Dos Aztecas Heritage Corn Tortillas", unitAmount: 899 }
+  "corn-tortillas": { name: "Dos Aztecas Homemade Nixtamal Tortillas (12 count)", unitAmount: 699 }
 };
 
 const LOCAL_ZIPS = new Set(["06103", "06105", "06106", "06107", "06110", "06112", "06114", "06117", "06119", "06120"]);

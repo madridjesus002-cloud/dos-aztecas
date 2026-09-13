@@ -60,7 +60,7 @@ const STORE_PRODUCTS = {
   'green-salsa': { name: 'Green Salsa', price: 899 },
   'carne-asada': { name: 'Carne Asada Marinade', price: 899 },
   'adobada-pastor': { name: 'Adobada al Pastor', price: 899 },
-  'corn-tortillas': { name: 'Heritage Corn Tortillas', price: 899 }
+  'corn-tortillas': { name: 'Homemade Nixtamal Tortillas (12 count)', price: 699 }
 };
 let cart = {};
 try { cart = JSON.parse(localStorage.getItem('dos-aztecas-cart') || '{}'); } catch { cart = {}; }
