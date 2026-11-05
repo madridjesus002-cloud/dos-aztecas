@@ -25,3 +25,17 @@ footer{background:#131b11;color:var(--cream);padding:65px 5vw 24px;display:grid;
 @media(max-width:900px){.tortilla-focus-grid{grid-template-columns:1fr}.product-recipe-link{margin:0 5vw 90px}}
 @media(max-width:650px){.product-recipe-link{align-items:flex-start;flex-direction:column;margin:0 18px 75px;padding:32px 24px}.product-recipe-link .pill{width:100%}.ingredient-group h3{font-size:20px}.recipe-hero-image img{object-position:center 48%}.recipe-jump-links{display:grid;grid-template-columns:1fr 1fr}.recipe-jump-links a{padding:12px 9px;font-size:12px}.recipe-method{padding:32px 22px}.recipe-body{gap:36px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.reveal{opacity:1;transform:none}.marquee-track{animation:none}.hero-reel-video:not(.is-active){display:none}}
+
+/* Colors and product imagery aligned with the new tortilla label. */
+:root{--gold:#edb000;--olive:#4c5e2d;--olive2:#394722;--ink:#26351f;--paper:#fff3c9;--line:rgba(38,53,31,.25)}
+body,.recipe-page,.site-header,.nav-links,.story-copy,.showcase{background:var(--gold)}
+.site-header{backdrop-filter:none}.announcement{border-bottom:1px solid var(--line)}
+.nixtamal-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:6vw;align-items:center;padding:65px 8vw 75px;max-width:1500px;margin:auto;color:var(--ink)}
+.nixtamal-hero h1{font:700 clamp(64px,7vw,112px)/1 "Oswald",sans-serif;letter-spacing:-.04em;margin:0 0 28px;text-transform:uppercase}.nixtamal-hero h1 span{font-size:.67em;display:block;margin-top:10px}
+.nixtamal-tagline{font:700 clamp(26px,3vw,40px)/1.2 "Playfair Display",serif}.nixtamal-hero p{line-height:1.6}.nixtamal-hero .hero-actions{display:flex;align-items:center;flex-wrap:wrap;margin-top:28px;gap:24px}.nixtamal-recipe-link{font-weight:700;border-bottom:1px solid currentColor;padding:10px 0}.nixtamal-ingredients{margin-top:34px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+.nixtamal-label{display:block;width:min(100%,360px);justify-self:center;box-shadow:0 22px 55px rgba(38,53,31,.2);border:1px solid var(--line);transform:rotate(2deg)}.nixtamal-label img{width:100%;height:auto}
+.gold-hero{background:var(--gold);color:var(--ink)}.tortilla-product-hero .eyebrow{color:var(--ink)}.tortilla-product-hero>img{height:auto;max-height:520px;width:min(320px,65vw);object-fit:contain;border:0;border-radius:0}.tortilla-product-hero .back-link{color:var(--ink)}.tortilla-product-hero .quick-add{color:var(--ink);border-color:var(--ink)}.tortilla-product-hero .product-price{border-color:var(--line)}
+.tortilla-focus-grid .category-card:first-child img{object-fit:contain;background:var(--gold);padding:16px 16px 135px}.recipe-hero,.recipe-teaser>div,footer{background:var(--olive2)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:5px}
+@media(max-width:900px){.nixtamal-hero{padding:40px 6vw 55px;gap:35px}.nixtamal-hero h1{font-size:62px}}
+@media(max-width:650px){.nixtamal-hero{grid-template-columns:1fr;padding:35px 24px 50px;gap:35px}.nixtamal-hero h1{font-size:clamp(54px,14vw,78px)}.nixtamal-label{width:230px;transform:none}.nixtamal-tagline{font-size:27px}.tortilla-product-hero .back-link{background:var(--olive2);color:white}.tortilla-product-hero>img{height:auto;max-height:390px;width:240px}.tortilla-product-hero h1{font-size:38px}}
