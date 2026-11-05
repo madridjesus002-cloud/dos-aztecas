@@ -28,14 +28,28 @@ footer{background:#131b11;color:var(--cream);padding:65px 5vw 24px;display:grid;
 
 /* Colors and product imagery aligned with the new tortilla label. */
 :root{--gold:#edb000;--olive:#4c5e2d;--olive2:#394722;--ink:#26351f;--paper:#fff3c9;--line:rgba(38,53,31,.25)}
-body,.recipe-page,.site-header,.nav-links,.story-copy,.showcase{background:var(--gold)}
+body,.recipe-page,.story-copy,.showcase{background:var(--cream)}
+.site-header,.nav-links{background:var(--gold)}
 .site-header{backdrop-filter:none}.announcement{border-bottom:1px solid var(--line)}
 .nixtamal-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:6vw;align-items:center;padding:65px 8vw 75px;max-width:1500px;margin:auto;color:var(--ink)}
 .nixtamal-hero h1{font:700 clamp(64px,7vw,112px)/1 "Oswald",sans-serif;letter-spacing:-.04em;margin:0 0 28px;text-transform:uppercase}.nixtamal-hero h1 span{font-size:.67em;display:block;margin-top:10px}
 .nixtamal-tagline{font:700 clamp(26px,3vw,40px)/1.2 "Playfair Display",serif}.nixtamal-hero p{line-height:1.6}.nixtamal-hero .hero-actions{display:flex;align-items:center;flex-wrap:wrap;margin-top:28px;gap:24px}.nixtamal-recipe-link{font-weight:700;border-bottom:1px solid currentColor;padding:10px 0}.nixtamal-ingredients{margin-top:34px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
 .nixtamal-label{display:block;width:min(100%,360px);justify-self:center;box-shadow:0 22px 55px rgba(38,53,31,.2);border:1px solid var(--line);transform:rotate(2deg)}.nixtamal-label img{width:100%;height:auto}
-.gold-hero{background:var(--gold);color:var(--ink)}.tortilla-product-hero .eyebrow{color:var(--ink)}.tortilla-product-hero>img{height:auto;max-height:520px;width:min(320px,65vw);object-fit:contain;border:0;border-radius:0}.tortilla-product-hero .back-link{color:var(--ink)}.tortilla-product-hero .quick-add{color:var(--ink);border-color:var(--ink)}.tortilla-product-hero .product-price{border-color:var(--line)}
+.gold-hero{background:var(--cream);color:var(--ink)}.tortilla-product-hero .eyebrow{color:var(--ink)}.tortilla-product-hero>img{height:auto;max-height:520px;width:min(320px,65vw);object-fit:contain;border:0;border-radius:0}.tortilla-product-hero .back-link{color:var(--ink)}.tortilla-product-hero .quick-add{color:var(--ink);border-color:var(--ink)}.tortilla-product-hero .product-price{border-color:var(--line)}
 .tortilla-focus-grid .category-card:first-child img{object-fit:contain;background:var(--gold);padding:16px 16px 135px}.recipe-hero,.recipe-teaser>div,footer{background:var(--olive2)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:5px}
 @media(max-width:900px){.nixtamal-hero{padding:40px 6vw 55px;gap:35px}.nixtamal-hero h1{font-size:62px}}
 @media(max-width:650px){.nixtamal-hero{grid-template-columns:1fr;padding:35px 24px 50px;gap:35px}.nixtamal-hero h1{font-size:clamp(54px,14vw,78px)}.nixtamal-label{width:230px;transform:none}.nixtamal-tagline{font-size:27px}.tortilla-product-hero .back-link{background:var(--olive2);color:white}.tortilla-product-hero>img{height:auto;max-height:390px;width:240px}.tortilla-product-hero h1{font-size:38px}}
+
+/* Repeat the label yellow as accents, separated by cream and olive sections. */
+.nixtamal-hero h1 span{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:.1em;text-underline-offset:.14em}
+.nixtamal-ingredients{display:inline-block;background:var(--gold);padding:10px 18px;border-radius:999px}
+.nixtamal-label{border:5px solid var(--gold);box-shadow:12px 12px 0 var(--olive)}
+.marquee{background:var(--gold);color:var(--ink)}.marquee-track b{color:var(--olive)}
+.story-copy blockquote{color:var(--ink);border-left-width:5px;background:var(--paper);padding:22px 26px}
+.showcase .category-card{border:4px solid var(--gold);border-radius:18px;box-shadow:7px 7px 0 var(--olive)}
+.tortilla-focus-grid .category-card:first-child img{background:var(--paper)}
+.tortilla-product-hero>img{border:5px solid var(--gold);box-shadow:9px 9px 0 var(--olive)}
+.tortilla-product-hero .product-price{border-top:3px solid var(--gold)}
+.recipe-note{background:var(--paper)}
+footer{border-top:8px solid var(--gold)}
