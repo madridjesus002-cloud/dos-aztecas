@@ -61,3 +61,16 @@ footer{border-top:8px solid var(--gold)}
 .brand-name{font-size:26px;color:#26351f;letter-spacing:.035em;text-shadow:none}
 @media(max-width:650px){.brand{gap:8px}.brand-icon{width:64px;height:54px}.brand-name{font-size:23px}.site-header{padding-left:10px;padding-right:10px}}
 @media(max-width:380px){.brand{gap:5px}.brand-icon{width:48px;height:44px}.brand-name{font-size:19px}}
+
+/* A personal family portrait with the same warm brand accents. */
+.family-story{background:var(--cream);color:var(--ink);padding:80px 6vw;gap:6vw;align-items:center;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.family-portrait{margin:0;position:relative;max-width:530px;justify-self:center;width:100%}
+.family-portrait img{width:100%;height:auto;display:block;border-radius:10px;border:5px solid var(--gold);box-shadow:12px 12px 0 var(--olive)}
+.family-portrait figcaption{margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--olive)}
+.family-story .story-copy{padding:0;background:transparent;color:var(--ink)}
+.family-story h2{font-size:clamp(40px,4.3vw,70px);line-height:1.06}.family-story .story-copy>p:not(.eyebrow){margin:0 0 18px}
+.family-story blockquote{font-size:22px;margin:12px 0 26px}.family-story-link{align-self:flex-start;font-size:14px;font-weight:800;border-bottom:2px solid var(--gold);padding-bottom:8px;line-height:1.6}
+@media(max-width:900px){.family-story{grid-template-columns:1fr;padding:60px 7vw;gap:45px}.family-portrait{max-width:440px}.family-story h2{max-width:650px}}
+@media(max-width:650px){.family-story{padding:45px 24px;gap:35px}.family-story h2{font-size:42px}.family-story .story-copy>p:not(.eyebrow){font-size:16px}.family-story blockquote{font-size:20px}.family-portrait img{box-shadow:8px 8px 0 var(--olive)}}
+
+.family-story{scroll-margin-top:94px}
