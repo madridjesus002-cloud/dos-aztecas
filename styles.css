@@ -74,3 +74,9 @@ footer{border-top:8px solid var(--gold)}
 @media(max-width:650px){.family-story{padding:45px 24px;gap:35px}.family-story h2{font-size:42px}.family-story .story-copy>p:not(.eyebrow){font-size:16px}.family-story blockquote{font-size:20px}.family-portrait img{box-shadow:8px 8px 0 var(--olive)}}
 
 .family-story{scroll-margin-top:94px}
+
+/* Framed family story card. */
+.family-story .story-copy{position:relative;padding:44px;background:var(--white);border:2px solid var(--gold);border-top:8px solid var(--gold);border-radius:16px;box-shadow:8px 8px 0 rgba(76,94,45,.16)}
+.family-story .story-copy .eyebrow{color:var(--olive)}
+.family-story .family-story-link{margin-top:10px}
+@media(max-width:650px){.family-story .story-copy{padding:30px 24px}.family-story h2{font-size:36px}}
