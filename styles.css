@@ -53,3 +53,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset
 .tortilla-product-hero .product-price{border-top:3px solid var(--gold)}
 .recipe-note{background:var(--paper)}
 footer{border-top:8px solid var(--gold)}
+
+/* Stronger brand presence in the navigation header. */
+.site-header,.nav-links{background:#ffc400}
+.site-header{border-bottom:2px solid rgba(38,53,31,.25)}
+.brand{gap:12px}.brand-icon{width:72px;height:58px;filter:brightness(.62) saturate(1.25)}
+.brand-name{font-size:26px;color:#26351f;letter-spacing:.035em;text-shadow:none}
+@media(max-width:650px){.brand{gap:8px}.brand-icon{width:64px;height:54px}.brand-name{font-size:23px}.site-header{padding-left:10px;padding-right:10px}}
+@media(max-width:380px){.brand{gap:5px}.brand-icon{width:48px;height:44px}.brand-name{font-size:19px}}
