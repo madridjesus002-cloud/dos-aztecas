@@ -113,7 +113,9 @@ document.querySelector('.cart-close').addEventListener('click', closeCart); cart
 document.addEventListener('keydown', event => { if (event.key === 'Escape') closeCart(); });
 document.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => {
   const id = button.dataset.product; if (!STORE_PRODUCTS[id]) return;
-  cart[id] = Math.min(10, (cart[id] || 0) + 1); updateCart();
+  const quantityInput = button.dataset.quantityInput ? document.getElementById(button.dataset.quantityInput) : null;
+  const quantity = quantityInput ? Number(quantityInput.value) : 1;
+  cart[id] = Math.min(10, (cart[id] || 0) + quantity); updateCart();
   if (button.dataset.mode === 'shop') openCart(); else showQuickToast(STORE_PRODUCTS[id].name);
   const original = button.textContent; button.classList.add('added'); button.textContent = 'Added ✓'; setTimeout(() => { button.classList.remove('added'); button.textContent = original; }, 1100);
 }));
@@ -135,3 +137,31 @@ checkoutButton.addEventListener('click', async () => {
 function closeCheckout() { embeddedCheckout?.destroy(); embeddedCheckout = undefined; document.querySelector('#embedded-checkout').replaceChildren(); checkoutSuccess.hidden = true; checkoutOverlay.classList.remove('open'); checkoutOverlay.setAttribute('aria-hidden', 'true'); document.body.classList.remove('checkout-open'); }
 document.querySelector('.checkout-close').addEventListener('click', closeCheckout); document.querySelector('.checkout-done').addEventListener('click', closeCheckout);
 updateCart();
+
+const galleryStage = document.querySelector('.gallery-stage');
+const galleryPhoto = document.querySelector('#product-photo');
+const galleryButtons = [...document.querySelectorAll('[data-view]')];
+const lightbox = document.querySelector('.product-lightbox');
+function selectProductView(button) {
+ galleryButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+ const label = button.dataset.view === 'label';
+ galleryPhoto.src = label ? 'nixtamal-corn-tortillas-label.jpg' : 'nixtamal-tortillas-product-yellow.png';
+ galleryPhoto.alt = label ? 'Complete yellow Nixtamal Corn Tortillas label' : 'Dos Aztecas tortilla package photograph';
+ galleryStage.classList.toggle('detail-view', button.dataset.view === 'detail');
+}
+galleryButtons.forEach(button => button.addEventListener('click', () => selectProductView(button)));
+let galleryTouchX = 0;
+galleryStage?.addEventListener('touchstart', e => { galleryTouchX = e.changedTouches[0].clientX; }, {passive:true});
+galleryStage?.addEventListener('touchend', e => {
+ const delta = e.changedTouches[0].clientX - galleryTouchX;
+ if (Math.abs(delta) < 45) return;
+ const current = galleryButtons.findIndex(button => button.getAttribute('aria-pressed') === 'true');
+ selectProductView(galleryButtons[(current + (delta < 0 ? 1 : -1) + galleryButtons.length) % galleryButtons.length]);
+}, {passive:true});
+galleryStage?.addEventListener('click', () => { lightbox.querySelector('img').src = galleryPhoto.src; lightbox.showModal(); });
+document.querySelector('.lightbox-close')?.addEventListener('click', () => lightbox.close());
+lightbox?.addEventListener('click', e => { if(e.target === lightbox) lightbox.close(); });
+document.querySelector('#pack-quantity')?.addEventListener('change', e => {
+ const button = document.querySelector('[data-quantity-input="pack-quantity"]');
+ button.textContent = `Add to Cart — $${(6.99 * Number(e.target.value)).toFixed(2)}`;
+});
