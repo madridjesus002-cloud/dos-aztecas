@@ -113,3 +113,11 @@ footer{border-top:8px solid var(--gold)}
 /* Brand-yellow footer typography. */
 footer,footer p,footer a,footer strong,footer span,footer .footer-bottom{color:var(--gold)}
 footer a:hover{color:var(--white)}
+
+/* Yellow footer with green brand lettering and the underlined O. */
+footer{background:var(--gold);border-top:1px solid var(--line)}
+footer,footer p,footer a,footer strong,footer span,footer .footer-bottom{color:var(--ink)}
+footer a:hover{color:var(--olive2);text-decoration:underline}
+footer .footer-logo img{filter:brightness(.62) saturate(1.25);opacity:1}
+footer .footer-bottom{border-color:rgba(38,53,31,.25)}
+footer .brand-o:after{background:currentColor}
