@@ -103,7 +103,7 @@ function updateCart() {
   const entries = Object.entries(cart).filter(([id, quantity]) => STORE_PRODUCTS[id] && quantity > 0);
   const itemCount = entries.reduce((sum, [, quantity]) => sum + quantity, 0);
   const total = entries.reduce((sum, [id, quantity]) => sum + STORE_PRODUCTS[id].price * quantity, 0);
-  cartCount.textContent = itemCount; cartTotal.textContent = money(total); cartEmpty.hidden = entries.length > 0; cartCheckout.hidden = entries.length === 0;
+  cartCount.textContent = itemCount; document.querySelectorAll('.cart-toggle').forEach(button => button.setAttribute('aria-label', `Open shopping bag, ${itemCount} ${itemCount === 1 ? 'item' : 'items'}`)); cartTotal.textContent = money(total); cartEmpty.hidden = entries.length > 0; cartCheckout.hidden = entries.length === 0;
   cartItems.innerHTML = entries.map(([id, quantity]) => `<div class="cart-item" data-cart-id="${id}"><strong>${STORE_PRODUCTS[id].name}</strong><span>${money(STORE_PRODUCTS[id].price * quantity)}</span><div class="quantity-controls"><button data-action="decrease" aria-label="Decrease ${STORE_PRODUCTS[id].name}">−</button><span>${quantity}</span><button data-action="increase" aria-label="Increase ${STORE_PRODUCTS[id].name}">+</button></div><button class="remove-item" data-action="remove">Remove</button></div>`).join('');
   saveCart();
 }
