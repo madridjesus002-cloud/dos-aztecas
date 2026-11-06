@@ -121,3 +121,5 @@ footer a:hover{color:var(--olive2);text-decoration:underline}
 footer .footer-logo img{filter:brightness(.62) saturate(1.25);opacity:1}
 footer .footer-bottom{border-color:rgba(38,53,31,.25)}
 footer .brand-o:after{background:currentColor}
+
+footer .footer-links strong{color:var(--ink)}
