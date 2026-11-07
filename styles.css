@@ -167,3 +167,7 @@ footer .footer-links strong{color:var(--ink)}
 .story-ending+.showcase{padding-top:35px}
 .tortilla-video-hero+.marquee{border-top:1px solid rgba(76,94,45,.2);border-bottom:1px solid rgba(76,94,45,.2)}
 @media(max-width:650px){.family-story{padding-bottom:20px}.story-ending+.showcase{padding-top:24px}}
+
+/* Warm yellow from the tortilla label within the family story card. */
+.family-story .story-copy{background:linear-gradient(135deg,#fff2bd 0%,#fff8df 48%,#fffdf8 100%);border-left-color:var(--gold)}
+.family-story .story-copy .eyebrow{background:#f9d66a;padding:9px 12px;border:0;border-radius:6px;color:var(--ink)}
