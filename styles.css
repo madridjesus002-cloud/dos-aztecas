@@ -159,3 +159,11 @@ footer .footer-links strong{color:var(--ink)}
 .heritage-serpent:after{background:var(--heritage-ink);mask:url('assets/heritage-serpent.png') no-repeat center/contain;-webkit-mask:url('assets/heritage-serpent.png') no-repeat center/contain;opacity:.78}
 .heritage-divider+.family-story{padding-top:24px}.showcase:has(+.heritage-divider){padding-bottom:40px}.heritage-divider+.recipe-teaser{margin-top:25px}.heritage-divider+.learn-section{padding-top:30px}.heritage-divider+.learn-closing{padding-top:28px}
 @media(max-width:650px){.heritage-divider{height:58px}.heritage-divider:before{height:30px;mask-size:48px 30px;-webkit-mask-size:48px 30px}.heritage-serpent{height:56px;width:148px}.heritage-divider+.family-story{padding-top:16px}.showcase:has(+.heritage-divider){padding-bottom:26px}.heritage-divider+.recipe-teaser{margin-top:18px}}
+
+/* Logo-green heritage accents and a compact family story. */
+.heritage-divider{--heritage-ink:var(--olive)}
+.heritage-divider:before{opacity:.85}.heritage-serpent:after{opacity:1}
+.family-story{min-height:0;padding-bottom:28px}
+.story-ending+.showcase{padding-top:35px}
+.tortilla-video-hero+.marquee{border-top:1px solid rgba(76,94,45,.2);border-bottom:1px solid rgba(76,94,45,.2)}
+@media(max-width:650px){.family-story{padding-bottom:20px}.story-ending+.showcase{padding-top:24px}}
