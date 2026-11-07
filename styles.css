@@ -136,3 +136,12 @@ footer .footer-links strong{color:var(--ink)}
 .family-story .story-copy{min-width:0;width:100%;box-sizing:border-box}.family-story h2,.family-story p{min-width:0;overflow-wrap:break-word}
 @media(max-width:900px){.family-story .story-copy{width:calc(100% - 40px)}}
 @media(max-width:650px){.family-story .story-copy{width:calc(100% - 24px)}}
+
+/* Feathered-serpent and geometric borders inspired by the packaging. */
+.heritage-divider{position:relative;width:100%;height:114px;background:var(--cream);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.heritage-divider:before{content:"";position:absolute;left:0;right:0;height:54px;background:url('assets/heritage-lines.svg') repeat-x center;background-size:122px 54px;opacity:.34}
+.heritage-serpent{position:relative;width:210px;height:108px;background:var(--cream);display:block;z-index:1}
+.heritage-serpent:after{content:"";position:absolute;inset:0 8px;background:url('assets/heritage-serpent.svg') no-repeat center;background-size:contain;opacity:.75}
+.family-story .story-copy .eyebrow{border-bottom:2px solid rgba(231,169,14,.65);padding-bottom:14px;align-self:flex-start}
+.home-tortilla-feature+.marquee{border-top:1px solid rgba(76,94,45,.2);border-bottom:1px solid rgba(76,94,45,.2)}
+@media(max-width:650px){.heritage-divider{height:84px}.heritage-divider:before{height:39px;background-size:89px 39px;opacity:.3}.heritage-serpent{width:157px;height:80px}.heritage-serpent:after{inset:0 5px}}
