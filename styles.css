@@ -171,3 +171,9 @@ footer .footer-links strong{color:var(--ink)}
 /* Warm yellow from the tortilla label within the family story card. */
 .family-story .story-copy{background:linear-gradient(135deg,#fff2bd 0%,#fff8df 48%,#fffdf8 100%);border-left-color:var(--gold)}
 .family-story .story-copy .eyebrow{background:#f9d66a;padding:9px 12px;border:0;border-radius:6px;color:var(--ink)}
+
+/* Community videos in a responsive branded frame. */
+.tiktok-community{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:5vw;padding:60px 6vw;background:var(--cream)}
+.tiktok-copy h2{font:700 clamp(36px,4vw,58px)/1.08 "Playfair Display",serif;letter-spacing:-.035em;margin:0 0 22px}.tiktok-copy>p:not(.eyebrow){line-height:1.7;max-width:390px;margin-bottom:28px}.tiktok-copy .pill{background:var(--olive2);color:var(--cream);font-size:13px}
+.tiktok-preview{min-width:0;background:#fff8df;border:3px solid var(--gold);border-radius:20px;padding:18px 12px;box-shadow:7px 7px 0 var(--olive);overflow:hidden}.tiktok-preview .tiktok-embed{margin:0 auto!important;width:100%!important;min-width:0!important}.tiktok-preview iframe{max-width:100%}.tiktok-fallback{display:block;text-align:center;font-size:12px;font-weight:700;padding:14px 5px 0;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:900px){.tiktok-community{grid-template-columns:1fr;gap:30px;padding:40px 24px 50px}.tiktok-copy{text-align:center}.tiktok-copy>p:not(.eyebrow){margin-left:auto;margin-right:auto}.tiktok-preview{width:100%;max-width:720px;justify-self:center}}
